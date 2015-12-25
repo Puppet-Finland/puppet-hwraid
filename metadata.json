@@ -1,0 +1,13 @@
+{
+  "name": "puppetfinland-hwraid",
+  "version": "0.1.0",
+  "author": "Puppet-Finland team",
+  "license": "BSD license",
+  "summary": "Setup hwraid",
+  "source": "https://github.com/Puppet-Finland/hwraid.git",
+  "project_page": "https://github.com/Puppet-Finland/hwraid",
+  "dependencies": [
+    { "name": "puppetfinland/os", "version_requirement": ">= 0.5.8" },
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.0.0" }
+  ]
+}
