@@ -1,0 +1,6 @@
+### THIS FILE IS MANAGED BY PUPPET. ANY MANUAL CHANGES WILL GET OVERWRITTEN.
+
+check process megaclisas-statusd with pidfile <%= scope['hwraid::params::megaclisas_statusd_pidfile'] %>
+   start program = "<%= scope['hwraid::params::megaclisas_service_start'] %>"
+   stop  program = "<%= scope['hwraid::params::megaclisas_service_stop'] %>"
+   alert <%= scope['hwraid::megaraidsas::email'] %> with reminder on 480 cycles
