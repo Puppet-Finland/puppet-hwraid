@@ -8,6 +8,9 @@
 # [*ensure*]
 #   Status of AAC RAID monitoring. Valid values are 'present' (default) and 
 #   'absent'.
+# [*manage_monit*]
+#   Whether to monitor aacraid-statusd using monit. Valid values are true (default) and
+#   false.
 # [*remind*]
 #   How often to send reminder emails (of degraded arrays). Value is given in 
 #   seconds and defaults to 86400 (24 hours)
@@ -18,6 +21,7 @@
 class hwraid::aac
 (
     $ensure = 'present',
+    $manage_monit = true,
     $remind = 86400,
     $email = $::servermonitor
 
@@ -25,6 +29,7 @@ class hwraid::aac
 {
 
     validate_re("${ensure}", '^(present|absent)$')
+    validate_bool($manage_monit)
     validate_numeric($remind)
     validate_string($email)
 
@@ -67,4 +72,10 @@ class hwraid::aac
         require => Package['hwraid-aacraid'],
     }
 
+    if $manage_monit {
+        monit::fragment { 'hwraid-aacraid-statusd.monit':
+            basename   => 'aacraid-statusd',
+            modulename => 'hwraid',
+        }
+    }
 }

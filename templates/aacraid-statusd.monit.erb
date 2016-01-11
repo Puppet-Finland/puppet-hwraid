@@ -1,0 +1,6 @@
+### THIS FILE IS MANAGED BY PUPPET. ANY MANUAL CHANGES WILL GET OVERWRITTEN.
+
+check process aacraid-statusd with pidfile <%= scope['hwraid::params::aacraid_statusd_pidfile'] %>
+   start program = "<%= scope['hwraid::params::aacraid_service_start'] %>"
+   stop  program = "<%= scope['hwraid::params::aacraid_service_stop'] %>"
+   alert <%= scope['hwraid::aac::email'] %> with reminder on 480 cycles

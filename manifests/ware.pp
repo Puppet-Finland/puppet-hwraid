@@ -10,6 +10,9 @@
 # [*ensure*]
 #   Status of RAID monitoring. Valid values are 'present' (default) and 
 #   'absent'.
+# [*manage_monit*]
+#   Whether to monitor 3ware-statusd using monit. Valid values are true 
+#   (default) and false.
 # [*remind*]
 #   How often to send reminder emails (of degraded arrays). Value is given in 
 #   seconds and defaults to 86400 (24 hours)
@@ -20,6 +23,7 @@
 class hwraid::ware
 (
     $ensure = 'present',
+    $manage_monit = true,
     $remind = 86400,
     $email = $::servermonitor
 
@@ -27,6 +31,7 @@ class hwraid::ware
 {
 
     validate_re("${ensure}", '^(present|absent)$')
+    validate_bool($manage_monit)
     validate_numeric($remind)
     validate_string($email)
 
@@ -65,8 +70,15 @@ class hwraid::ware
     }
 
     service { 'hwraid-3ware-statusd':
-        name    => $::hwraid::params::ware_status_service_name,
+        name    => $::hwraid::params::ware_service_name,
         enable  => $service_enable,
         require => Package['hwraid-3ware-status'],
+    }
+
+    if $manage_monit {
+        monit::fragment { 'hwraid-3ware-statusd.monit':
+            basename   => '3ware-statusd',
+            modulename => 'hwraid',
+        }
     }
 }
