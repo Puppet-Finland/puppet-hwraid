@@ -8,6 +8,8 @@ This module provides these classes:
 
 * [Class: hwraid](manifests/init.pp)
 * [Class: hwraid::aac](manifests/aac.pp)
+* [Class: hwraid::ware](manifests/ware.pp)
+* [Class: hwraid::megaraidsas](manifests/megaraidsas.pp)
 
 There are also a few custom facts:
 
