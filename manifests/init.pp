@@ -24,14 +24,11 @@
 #
 class hwraid
 (
-    $manage = true,
-    $ensure = 'present'
+    Boolean $manage = true,
+            $ensure = 'present'
 
 ) inherits hwraid::params
 {
-
-validate_bool($manage)
-validate_re("${ensure}", '^(present|absent)$')
 
 if $manage {
 

@@ -20,18 +20,13 @@
 #
 class hwraid::aac
 (
-    $ensure = 'present',
-    $manage_monit = true,
-    $remind = 86400,
-    $email = $::servermonitor
+    Enum['present','absent'] $ensure = 'present',
+    Boolean                  $manage_monit = true,
+    Integer                  $remind = 86400,
+    String                   $email = $::servermonitor
 
 ) inherits hwraid::params
 {
-
-    validate_re("${ensure}", '^(present|absent)$')
-    validate_bool($manage_monit)
-    validate_numeric($remind)
-    validate_string($email)
 
     include ::hwraid
 

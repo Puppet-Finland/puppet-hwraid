@@ -9,7 +9,7 @@
 #
 class hwraid::aptrepo
 (
-    $ensure
+    Enum['present','absent'] $ensure
 )
 {
     include ::apt
