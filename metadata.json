@@ -1,6 +1,6 @@
 {
   "name": "puppetfinland-hwraid",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Puppet-Finland team",
   "summary": "Configure hardware RAID monitoring on Linux",
   "license": "BSD-2-Clause",
