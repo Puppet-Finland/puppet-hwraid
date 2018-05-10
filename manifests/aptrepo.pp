@@ -25,11 +25,11 @@ class hwraid::aptrepo
     }
 
     apt::source { 'hwraid.le-vert.net':
-        ensure      => $ensure,
-        location    => "http://hwraid.le-vert.net/${distrib}",
-        release     => $release,
-        repos       => 'main',
-        key         => {'id'     => '0073C11919A641464163F7116005210E23B3D3B4',
-                        'source' => 'http://hwraid.le-vert.net/debian/hwraid.le-vert.net.gpg.key' }
+        ensure   => $ensure,
+        location => "http://hwraid.le-vert.net/${distrib}",
+        release  => $release,
+        repos    => 'main',
+        key      => {'id'     => '0073C11919A641464163F7116005210E23B3D3B4',
+                    'source'  => 'http://hwraid.le-vert.net/debian/hwraid.le-vert.net.gpg.key' }
         }
 }
