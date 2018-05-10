@@ -2,7 +2,7 @@
   "name": "puppetfinland-hwraid",
   "version": "0.3.0",
   "author": "Puppet-Finland team",
-  "license": "BSD license",
+  "license": "BSD-2-Clause",
   "summary": "Setup hwraid",
   "source": "https://github.com/Puppet-Finland/hwraid.git",
   "project_page": "https://github.com/Puppet-Finland/hwraid",
