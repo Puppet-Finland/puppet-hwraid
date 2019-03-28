@@ -71,9 +71,10 @@ class hwraid::ware
     }
 
     if $manage_monit {
-        monit::fragment { 'hwraid-3ware-statusd.monit':
+        @monit::fragment { 'hwraid-3ware-statusd.monit':
             basename   => '3ware-statusd',
             modulename => 'hwraid',
+            tag        => 'default',
         }
     }
 }

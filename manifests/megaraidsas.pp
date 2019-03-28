@@ -69,9 +69,10 @@ class hwraid::megaraidsas
     }
 
     if $manage_monit {
-        monit::fragment { 'hwraid-megaclisas-statusd.monit':
+        @monit::fragment { 'hwraid-megaclisas-statusd.monit':
             basename   => 'megaclisas-statusd',
             modulename => 'hwraid',
+            tag        => 'default',
         }
     }
 }

@@ -68,9 +68,10 @@ class hwraid::aac
     }
 
     if $manage_monit {
-        monit::fragment { 'hwraid-aacraid-statusd.monit':
+        @monit::fragment { 'hwraid-aacraid-statusd.monit':
             basename   => 'aacraid-statusd',
             modulename => 'hwraid',
+            tag        => 'default',
         }
     }
 }
