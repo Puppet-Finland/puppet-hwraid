@@ -34,7 +34,7 @@ class hwraid::params {
         }
     }
 
-    if str2bool($::has_systemd) {
+    if $::systemd {
         $aacraid_service_start = "${::os::params::systemctl} start ${aacraid_service_name}"
         $aacraid_service_stop = "${::os::params::systemctl} stop ${aacraid_service_name}"
         $ware_service_start = "${::os::params::systemctl} start ${ware_service_name}"
